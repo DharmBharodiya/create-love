@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@100&display=swap");
+
+      /*font-family: 'Montserrat', sans-serif;*/
+
+      body {
+        display: flex;
+        justify-content: center;
+        height: 100vh;
+        align-items: center;
+        background: #1b032b;
+      }
+
+      .head {
+        font-family: "Montserrat", sans-serif;
+        font-weight: bold;
+        font-size: 5em;
+        color: #e823a0;
+        text-align: center;
+        position: relative;
+        text-shadow: 0 0 5px #e823a0;
+        transition: all 0.5s linear;
+        cursor: pointer;
+      }
+
+      .head::after {
+        content: attr(data-text);
+        position: absolute;
+        width: 100%;
+        top: 0;
+        left: 0;
+        /* padding: 0 20px; */
+        z-index: -1;
+        color: #e823a0;
+        filter: blur(0.8em);
+        opacity: 0;
+        transition: all 0.5s linear;
+        pointer-events: none;
+
+      }
+
+      .head::before {
+        content: "";
+        width: 100%;
+        height: 100%;
+        background: #e823a0;
+        position: absolute;
+        top: 110%;
+        left: 0;
+        transform: perspective(1em) rotateX(40deg) scale(1, 0.35);
+        filter: blur(1em);
+        opacity: 0;
+        transition: all 0.5s linear;
+        transition-delay: 0.2s;
+        pointer-events: none;
+      }
+
+      .head:hover {
+        text-shadow: 0 0 15px #e823a0;
+      }
+
+      .head:hover::after {
+        opacity: 1;
+      }
+
+      .head:hover::before {
+        opacity: 1;
+      }
+
+      .head1{
+          color: white;
+          font-size: 2em;
+          font-family: 'Montserrat', sans-serif;
+          position: absolute;
+          text-align: center;
+          top: 77%;
+          text-shadow: 0 0 3px #fff;
+      }
+
+      @media only screen and (max-width: 400px){
+          .head{
+            text-shadow: 0 0 15px #e823a0;
+            font-size: 3em;
+          }
+          .head::after {
+                opacity: 1;
+            }
+
+          .head::before {
+                opacity: 1;
+            }
+
+            .head1{
+                font-size: 1.5em;
+                /* top: 65%; */
+            }
+      }
+    </style>
+  </head>
+  <body>
+      <div id="wrapper"  onclick="myFunction()">
+    <h1 class="head" id="headshot" data-text="LEARN">LEARN</h1>
+</div>
+    <h1 class="head1">Create What You Love</h1>
+
+    <script>
+        //array
+
+      var content = ["CREATE", "WHAT", "YOU", "LOVE"];
+
+      //function
+
+      function myFunction() {
+       var headshot = document.getElementById("headshot").innerHTML = content[Math.floor(Math.random()*content.length)];
+       
+       var datd = document.querySelectorAll("h1[data-text]").innerHTML = headshot;
+
+       //testing
+       console.log(datd);
+       console.log(headshot);
+
+       //returning 
+       return headshot;
+       return datd;
+       
+        //function over
+      }
+    </script>
+  </body>
+</html>
